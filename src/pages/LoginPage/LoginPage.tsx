@@ -50,7 +50,7 @@ const LoginPage: React.FC = _ => {
                             </div>
                             <div className="form-group">
                                 <label form={'loginPassword'}>Password</label>
-                                <input name="password" type='passwordError' ref={register} id={'loginPassword'}
+                                <input name="password" type='password' ref={register} id={'loginPassword'}
                                        className="form-control"  data-testid = "password"/>
                                 { errors.password &&
                                 <ErrorComponent testid = {"passwordError"}
