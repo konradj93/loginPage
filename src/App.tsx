@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import { Switch, Route } from 'react-router';
+import LoginPage from './pages/LoginPage/LoginPage';
+import NotFound from './pages/NotFound/NotFound';
+import { UserContextProvider } from './context/userContext';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Dashboard from './pages/Dashboard/Dashboard';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const App: React.FC = _ => {
+    const [isAuth, setAuthorization] = useState<boolean>(false);
+    const setAuth = (auth:boolean):void => {
+        setAuthorization(auth)
+    }
+    return <UserContextProvider value={{
+        isAuth,
+        setAuth
+    }}>
+        <Switch>
+            <Route path='/login' component={LoginPage} />
+            <PrivateRoute
+                path='/dashboard'
+                component={Dashboard}
+            />
+            <Route component={NotFound}/>
+        </Switch>;
+    </UserContextProvider>
+
 }
 
 export default App;
