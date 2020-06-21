@@ -12,7 +12,7 @@ export const PrivateRoute: React.FC<RouteProps> = props => {
 
     useEffect(()=>{
         if(!isAuth){
-            history.push('/login');
+            history.push('/');
         }
     }, [isAuth]);
 

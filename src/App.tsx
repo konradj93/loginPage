@@ -17,7 +17,7 @@ const App: React.FC = _ => {
         setAuth
     }}>
         <Switch>
-            <Route path='/login' component={LoginPage} />
+            <Route path='/' component={LoginPage} />
             <PrivateRoute
                 path='/dashboard'
                 component={Dashboard}
